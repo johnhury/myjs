@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		<style>
+		ul,li{list-style:none;padding:0;margin:0;}
+		</style>
+	</head>
+	<body>
+
+			<ul id="b">
+				<li id="asdfaasdf">图片1</li>
+				<li class="a">图片2</li>
+				<li class="aba ab">图片3</li>
+				<li class="a b">图片4</li>
+				<li><b>图片5</b><span>Ddfs但是发生的</span></li>
+			</ul>
+	
+	<script>
+function getByClass(oParent,sClass){
+	var oParent=document.getElementById(oParent);
+	if(oParent instanceof Object){
+		var aEles=oParent.getElementsByTagName("*");
+		var i;
+		var aResult=[];
+		for(i=0;i<aEles.length;i++){
+		oClass=aEles[i].className;
+		cArr=oClass.split(" ");
+		for(x in cArr)
+			if(cArr[x]==sClass){
+				aResult.push(aEles[i]);
+			}
+		};
+	}
+	return aResult;
+}
+var sss=getByClass("b","a");
+for(x in sss)
+sss[x].style.color="red";
+	</script>
+</body></html>

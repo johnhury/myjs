@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		<style>
+		ul,li{list-style:none;padding:0;margin:0;}
+		</style>
+	</head>
+	<body>
+
+			<ul id="b">
+				<li id="asdfaasdf">图片1</li>
+				<li class="a">图片2</li>
+				<li class="aba ab">图片3</li>
+				<li class="a b">图片4</li>
+				<li><b>图片5</b><span>Ddfs但是发生的</span></li>
+			</ul>
+			<br />
+			<ul id="bc">
+				<li id="asdfaasdf">图片1</li>
+				<li class="a">图片2</li>
+				<li class="aba ab">图片3</li>
+				<li class="a b">图片4</li>
+				<li><b>图片5</b><span>Ddfs但是发生的</span></li>
+			</ul>
+	
+	<script>
+function GetClass(oParent,sClass){
+	this.oParent=document.getElementById(oParent);
+	this.sClass=sClass;
+	_this=this;
+	this.aResult=[];
+}
+GetClass.prototype.getElementByClassName=function(){
+	if(_this.oParent instanceof Object){
+	
+		_this.aEles=_this.oParent.getElementsByTagName("*");
+		
+		_this.i=0;
+		for(_this.i=0;_this.i<_this.aEles.length;_this.i++){
+		_this.oClass=_this.aEles[_this.i].className;
+		_this.cArr=_this.oClass.split(" ");
+		for(x in _this.cArr)
+			if(_this.cArr[x]==_this.sClass){
+				_this.aResult.push(_this.aEles[_this.i]);
+			}
+		};
+		return _this.aResult;
+	}
+	}
+var oClass=new GetClass("bc","a");
+var sClass=oClass.getElementByClassName();
+
+
+var oClass2=new GetClass("b","a");
+var sClass2=oClass2.getElementByClassName();
+
+for( x in sClass){
+sClass[x].style.color='red';
+}
+for( x in sClass2){
+sClass2[x].style.color='green';
+}
+
+	</script>
+</body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb_2312">
+<title>GetPos</title>
+<style>
+body{margin:0;padding:0;}
+div{padding:40px 50px;}
+#div1{background:red;position:relative;}
+#div2{background:green;position:relative;}
+#div3{background:yellow;}
+</style>
+<script>
+window.onload=function(){
+var _t=new GetPos("div3");
+_t.run();
+alert(_t.id.title+"Œª÷√ «left:"+_t.pos.left+"top:"+_t.pos.top);
+};
+function GetPos(id){
+	this.id=this.mid=document.getElementById(id);
+}
+GetPos.prototype={
+	Constructor:GetPos,
+	pos:{top:0,left:0},
+	run:function(){
+		while(this.mid){
+		this.pos.left+=this.mid.offsetLeft;
+		this.pos.top+=this.mid.offsetTop;
+		this.mid=this.mid.offsetParent;}
+	}
+}
+</script>
+
+</head>
+<body>
+<div id="div1">
+	<div id="div2" class='div2'>
+		<div id="div3" class='div3' title="div3"></div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE>
+<html ng-app>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>angularJs_ng-app</title>
+<script src="js/angular.js"></script>
+</head>
+
+<body>
+
+<div ng-controller="UserController">
+	<input ng-model="user.name" type="text" />
+	<input ng-model="user.email" type="text" />
+	<p>用户名：{{user.name}}</p>
+	<p>邮箱：{{user.email}}</p>
+	<input type="button" value="订阅" ng-click="user.subscribe()" />
+</div>
+</body>
+</html>

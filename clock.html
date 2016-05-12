@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb_2312">
+<title>Css3-clock</title>
+<style>
+	@-webkit-keyframes round{
+		//0%{transform:rotateZ(0deg);}
+		//100%{transform:rotateZ(360deg);}
+	}
+	body{background:#000;margin:20px;}
+	ul,li{list-style:none;padding:0;margin:0;}
+	.demo{width:700px;margin:0 auto;}
+	.tyx{width:700px;height:700px;position:relative;}
+	.tyx li{position:absolute;}
+	.tyx li:nth-child(1){width:600px;height:600px;border:1px solid #ccc;border-radius:600px;top:0;left:0;}
+	.tyx li:nth-child(1) span{width:20px;height:20px;position:absolute;top:-10px;left:291px;border-radius:20px;display:block;background:#0ff;transform-origin:10px 311px;}
+	
+	.tyx li:nth-child(2){width:540px;height:540px;border:1px solid #ccc;border-radius:540px;top:30px;left:30px;}
+	.tyx li:nth-child(2) span{width:20px;height:20px;position:absolute;top:-10px;left:261px;border-radius:20px;display:block;background:#f0f;transform-origin:10px 281px;}
+	
+	.tyx li:nth-child(3){width:480px;height:480px;border:1px solid #ccc;border-radius:510px;top:60px;left:60px;}
+	.tyx li:nth-child(3) span{width:20px;height:20px;position:absolute;top:-10px;left:231px;border-radius:20px;display:block;background:#ff0;transform-origin:10px 251px;}
+	
+	.tyx li:nth-child(4){width:10px;height:10px;background:red;border-radius:10px;top:295px;left:295px;}
+	#oS{}
+	#oM{}
+	#oH{}
+</style>
+
+</head>
+<body>
+<div class="demo">
+	<ul class="tyx" id="tyx">
+		<li><span id="s"></span></li>
+		<li><span id="m"></span></li>
+		<li><span id="h"></span></li>
+		<li><span></span></li>
+	</ul>
+</div>
+</body>
+<script>
+		var oS=document.getElementById("s");
+		var oM=document.getElementById("m");
+		var oH=document.getElementById("h");
+	update();
+	setInterval('update()',1000);
+		function update(){
+		var mytime=new Date();
+		second=mytime.getSeconds();
+		minutes=mytime.getMinutes();
+		hour=mytime.getHours();
+		hrotate=hour*30+minutes/2+second/120;
+		mrotate=minutes*6+second/10;
+		srotate=second*6;
+		oS.style.transform="rotateZ("+srotate+"deg)";
+		oM.style.transform="rotateZ("+mrotate+"deg)";
+		oH.style.transform="rotateZ("+hrotate+"deg)";
+
+	}
+
+</script>
+</html>

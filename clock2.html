@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb_2312">
+<title>Canvas</title>
+<script>
+window.onload=function(){
+	var canvas=document.getElementById("canvas");
+	clock();
+	timer=setInterval(clock,1000);
+}	
+	function clock(){
+	var cnt=canvas.getContext("2d");
+	cnt.clearRect(0,0,canvas.width,canvas.height);
+	var oDate=new Date();
+	var oHour=oDate.getHours();
+	var oMinutes=oDate.getMinutes();
+	var oSecound=oDate.getSeconds();
+	
+	//表盘
+	cnt.beginPath();
+	cnt.strokeStyle="green";
+	cnt.lineWidth="5";
+	cnt.arc(300,300,200,0,360,false);
+	
+	cnt.stroke();
+	cnt.closePath();
+	
+
+	
+	//分针刻度
+	
+	for(var i=0;i<60;i++){
+		cnt.beginPath();
+		cnt.save();
+			cnt.strokeStyle="#666";
+			cnt.lineWidth="2";
+			cnt.translate(300,300);
+			cnt.rotate(i*6*Math.PI/180);
+			cnt.moveTo(0,-180);
+			cnt.lineTo(0,-190);		
+			cnt.stroke();
+		cnt.restore();
+		cnt.closePath();
+	}
+	
+	//时针刻度
+	
+	for(var i=0;i<12;i++){
+		cnt.beginPath();
+		cnt.save();
+			cnt.strokeStyle="#d00";
+			cnt.lineWidth="2";
+			cnt.translate(300,300);
+			cnt.rotate(i*30*Math.PI/180);
+			cnt.moveTo(0,-175);
+			cnt.lineTo(0,-190);		
+			cnt.stroke();
+		cnt.restore();
+		cnt.closePath();
+	}
+	
+	//时针
+	
+	cnt.beginPath();
+		cnt.save();
+			cnt.strokeStyle="#AAA";
+			cnt.lineWidth="6";
+			cnt.translate(300,300);
+			cnt.rotate(oHour%12*30*Math.PI/180+(oHour%12*30*Math.PI/180/12));
+			cnt.moveTo(0,10);
+			cnt.lineTo(0,-105);
+			cnt.stroke();
+		cnt.restore();
+	cnt.closePath();
+	
+	//分针
+	
+	cnt.beginPath();
+		cnt.save();
+			cnt.strokeStyle="#AAA";
+			cnt.lineWidth="4";
+			cnt.translate(300,300);
+			cnt.rotate(oMinutes*6*Math.PI/180);
+			cnt.moveTo(0,15);
+			cnt.lineTo(0,-155);
+			cnt.stroke();
+		cnt.restore();
+	cnt.closePath();
+	
+	//秒针
+	
+	cnt.beginPath();
+		cnt.save();
+			cnt.strokeStyle="#f00";
+			cnt.lineWidth="2";
+			cnt.translate(300,300);
+			cnt.rotate(oSecound*6*Math.PI/180);
+			cnt.moveTo(0,20);
+			cnt.lineTo(0,-165);
+			cnt.stroke();
+		cnt.restore();
+	cnt.closePath();
+	
+	//秒针中心圆
+	
+	cnt.beginPath();
+		cnt.save();
+			cnt.strokeStyle="#f00";
+			cnt.lineWidth="4";
+			cnt.translate(300,300);
+			cnt.fillStyle="#ccc";
+			cnt.arc(0,0,6,0,360,false);
+			cnt.fill();
+			cnt.stroke();
+		cnt.restore();
+	cnt.closePath();
+	
+}
+
+</script>
+</head>
+<body style="background:#000;">
+<canvas height="600" width="600" id="canvas" style="border:1px solid #333;background:#000;">
+您的浏览器不支持 canvas!!!
+</canvas>
+</body>
+</html>

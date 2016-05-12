@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb_2312">
+<title>мов╖</title>
+<style>
+*{padding:0;margin:0;}
+body{margin:0px;}
+.drag{width:100px;height:100px;cursor:move;background:#CCC;position:absolute;left:0;top:0;}
+
+</style>
+<script>
+		var disX=0;
+		var disY=0;
+		var oDiv=null;
+
+		window.onload=function(){
+		oDiv=document.getElementById("drag");
+		oDiv.onmousedown=fnDown;
+		}
+		function fnDown(ev){
+			var oEvent=ev||event;
+			disX=oEvent.clientX-oDiv.offsetLeft;
+			disY=oEvent.clientY-oDiv.offsetTop;
+			
+			document.onmousemove=fnMove;
+			document.onmouseup=fnUp;
+		}
+		function fnMove(ev){
+			var oEvent=ev||event;
+			oDiv.style.left=oEvent.clientX-disX+'px';
+			oDiv.style.top=oEvent.clientY-disY+'px';
+		}
+		function fnUp(){
+			document.onmousemove=null;
+			document.onmouseup=null;
+		}
+</script>
+
+</head>
+<body>
+<div id="drag" class="drag"></div>
+</body>
+</html>

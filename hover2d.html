@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Hover Css3</title>
+<style>
+ul,li{padding:0;margin:0;}
+h1{text-align:center;font:24px/32px arial;}
+a{text-decoration:none; color:#2a2a2a;}
+a{display:inline-block;width:120px;height:30px;background:#eee;line-height:30px; text-align:center;padding:10px;margin:10px 10px;}
+
+.demo{width:1200px;margin:0 auto;}
+
+.grow{transition:all 0.3s linear;}
+.grow:hover{transform:scale(1.1);}
+
+.shrink{transition:all 0.3s linear;}
+.shrink:hover{transform:scale(.9);}
+
+@-webkit-keyframes pulse{
+	25%{transform:scale(0.9);}
+	75%{transform:scale(1.1);}
+}
+.pulse:hover {-webkit-animation:pulse .5s linear infinite;}
+
+@-webkit-keyframes pulsegrow{
+	100%{transform:scale(1.1);}
+}
+.pulsegrow:hover {-webkit-animation:pulsegrow .3s linear infinite alternate;}
+
+@-webkit-keyframes pulseshrink{
+	100%{transform:scale(0.9);}
+}
+.pulseshrink:hover{
+	-webkit-animation:pulseshrink .3s linear infinite alternate;
+}
+@-webkit-keyframes push{
+	50%{transform:scale(0.9);}
+
+}
+.push:hover{
+	-webkit-animation:push .2s ease-in 1;
+}
+@-webkit-keyframes pop{
+	50%{transform:scale(1.1);}
+
+}
+.pop:hover{
+	-webkit-animation:pop .2s ease-in 1;
+}
+
+.rotate{transition:transform .2s ease-in;}
+.rotate:hover{transform:rotate(5deg);}
+
+.grotate{transition:transform .2s ease-in;}
+.grotate:hover{transform:rotate(5deg) scale(1.1);}
+
+.float{transition:transform .2s ease-in;}
+.float:hover{transform:translateY(-5px);}
+
+.sink{transition:transform .2s ease-in;}
+.sink:hover{transform:translateY(5px);}
+
+@-webkit-keyframes hover{
+	0%{transform:translateY(-3px);}
+	50%{transform:translateY(-8px);}
+	100%{transform:translateY(-3px);}
+}
+.hover:hover{-webkit-animation:hover 1s ease-out infinite;}
+
+@-webkit-keyframes hang{
+	0%{transform:translateY(3px);}
+	50%{transform:translateY(8px);}
+	100%{transform:translateY(3px);}
+}
+.hang:hover{-webkit-animation:hang 1s ease-out infinite;}
+
+.skew{transition:transform .2s linear;}
+.skew:hover{transform:skew(-10deg);}
+
+
+.skew-forward{transition:transform .2s linear;transform-origin:bottom left;}
+.skew-forward:hover{transform:skew(-10deg);}
+
+.skew-backward{transition:transform .2s linear;transform-origin:bottom left;}
+.skew-backward:hover{transform:skew(10deg);}
+
+.wobble-horizontal{width:200px;}
+@-webkit-keyframes wobble-horizontal{
+	16.65%{transform:translateX(-5px);}
+	33.33%{transform:translateX(5px);}
+	50%{transform:translateX(-3px);}
+	66.65%{transform:translateX(3px);}
+	83.33%{transform:translateX(-1px);}
+	100%{transform:translateX(0px);}
+}
+.wobble-horizontal:hover{-webkit-animation:wobble-horizontal 1s ease-in-out 1;}
+
+@-webkit-keyframes wobble-vertical{
+	16.65%{transform:translateY(-5px);}
+	33.33%{transform:translateY(5px);}
+	50%{transform:translateY(-3px);}
+	66.65%{transform:translateY(3px);}
+	83.33%{transform:translateY(-1px);}
+	100%{transform:translateY(0px);}
+}
+.wobble-vertical:hover{-webkit-animation:wobble-vertical 1s ease-in-out 1;}
+
+.wobble-br{width:200px;}
+@-webkit-keyframes wobble-br{
+	16.65%{transform:translateY(-5px) translateX(-5px);}
+	33.33%{transform:translateY(5px) translateX(5px);}
+	50%{transform:translateY(-3px) translateX(-3px);}
+	66.65%{transform:translateY(3px) translateX(3px);}
+	83.33%{transform:translateY(-1px) translateX(-1px);}
+	100%{transform:translateY(0px) translateX(0px);}
+}
+.wobble-br:hover{-webkit-animation:wobble-br 1s ease-in-out 1;}
+</style>
+</head>
+<body>
+<h1>2D Transforms</h1>
+<div class="demo">
+	<a href="#" class="grow">Grow</a>
+	<a href="#" class="shrink">Shrink</a>
+	<a href="#" class="pulse">Pulse</a>
+	<a href="#" class="pulsegrow">Pulse Grow</a>
+	<a href="#" class="pulseshrink">Pulse Shrink</a>
+	<a href="#" class="push">Push</a>
+	<a href="#" class="pop">Pop</a>
+	<a href="#" class="rotate">Rotate</a>
+	<a href="#" class="grotate">Grow Rotate</a>
+	<a href="#" class="float">Float</a>
+	<a href="#" class="sink">Sink</a>
+	<a href="#" class="hover">Hover</a>
+	<a href="#" class="hang">Hang</a>
+	<a href="#" class="skew">Skew</a>
+	<a href="#" class="skew-forward">Skew Forward</a>
+	<a href="#" class="skew-backward">Skew Backward</a>
+	<a href="#" class="wobble-horizontal">Wobble Horizontal</a>
+	<a href="#" class="wobble-vertical">Wobble Vertical</a>
+	<a href="#" class="wobble-br">Wobble To Bottom To Right</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb_2312">
+<title>Css3Ì«ÑôÏµ</title>
+<style>
+	@-webkit-keyframes round{
+		0%{transform:rotateZ(0deg);}
+		100%{transform:rotateZ(360deg);}
+	}
+	body{background:#000;}
+	ul,li{list-style:none;padding:0;margin:0;}
+	.demo{width:1000px;margin:0 auto;}
+	.tyx{width:700px;height:700px;position:relative;}
+	.tyx li{position:absolute;}
+	.tyx li:nth-child(1){width:600px;height:600px;border:1px solid #ccc;border-radius:600px;top:0;left:0;}
+	.tyx li:nth-child(1) span{width:20px;height:20px;position:absolute;top:-10px;left:291px;border-radius:20px;display:block;background:#0ff;transform-origin:10px 311px;-webkit-animation:round 5s linear infinite;}
+	
+	.tyx li:nth-child(2){width:540px;height:540px;border:1px solid #ccc;border-radius:540px;top:30px;left:30px;}
+	.tyx li:nth-child(2) span{width:20px;height:20px;position:absolute;top:-10px;left:261px;border-radius:20px;display:block;background:#f0f;transform-origin:10px 281px;-webkit-animation:round 5s linear infinite;}
+	
+	.tyx li:nth-child(3){width:480px;height:480px;border:1px solid #ccc;border-radius:510px;top:60px;left:60px;}
+	.tyx li:nth-child(3) span{width:20px;height:20px;position:absolute;top:-10px;left:231px;border-radius:20px;display:block;background:#ff0;transform-origin:10px 251px;-webkit-animation:round 5s linear infinite;}
+	
+	.tyx li:nth-child(4){width:420px;height:420px;border:1px solid #ccc;border-radius:420px;top:90px;left:90px;}
+	.tyx li:nth-child(4) span{width:20px;height:20px;position:absolute;top:-10px;left:201px;border-radius:20px;display:block;background:#f00;transform-origin:10px 221px;-webkit-animation:round 5s linear infinite;}
+</style>
+</style>
+</head>
+<body>
+<div class="demo">
+	<ul class="tyx">
+		<li><span></span></li>
+		<li><span></span></li>
+		<li><span></span></li>
+		<li><span></span></li>
+	</ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb_2312">
+<title>选项卡</title>
+<style>
+dl,dt,dd,ul,li{padding:0;margin:0;list-style:none;}
+a{text-decoration:none;color:#2a2a2a;font:16px/28px "宋体";}
+.clear{clear:both;}
+.oDiv{width:453px;margin:0 auto;border:1px solid #ccc;border-right:none;}
+.oDiv ul{width:100%;height:32px;}
+.oDiv ul li{width:150px;border-right:1px solid #ccc;float:left;text-align:center;font:16px/32px "宋体";}
+.oDiv ul li:hover, .on{background:#eee;cursor:pointer;}
+
+.oDiv dl{width:100%;}
+.oDiv dl dd{width:452px;border-top:1px solid #ccc;border-right:1px solid #ccc;}
+.hid{display:none;}
+.dis{display:block;}
+
+.list{ height:200px;padding:10px 0;}
+.list a{ display:block; text-indent:1em;}
+</style>
+<script>
+var oDiv=null;
+var oUl=null;
+var oLi=null;
+var oDd=null;
+var oDl=null;
+window.onload=function(){
+														//Tab选项卡获取
+	oDiv=document.getElementById("oDiv");
+	oUl=oDiv.getElementsByTagName("ul")[0];
+	oLi=oUl.getElementsByTagName("li");
+														//Tab内容获取	
+	oDl=oDiv.getElementsByTagName("dl")[0];
+	oDd=oDl.getElementsByTagName("dd");
+	
+	for(i=0;i<oLi.length;i++){							//循环检测每个选项卡
+			oLi[i].index=i;								//将选项卡的索引赋值为变量i
+			oLi[i].onmouseover=tab;
+		};
+}
+function tab()
+			{
+				for(i=0;i<oLi.length;i++){
+					oLi[i].className='';				//清空选项卡样式
+					oDd[i].className='hid';				//隐藏内容
+				}
+				this.className="on";					//给当前选项卡添加样式
+				oDd[this.index].className="dis";		//显示当前选项卡索引对应的内容
+			}
+</script>
+</head>
+<body>
+<div class='oDiv' id='oDiv'>
+	<ul>
+		<li class="on">新闻中心</li>
+		<li>法律法规</li>
+		<li>行业新闻</li>
+	</ul>
+	<dl>
+		<dd class="dis">
+			<div class="list">
+				<a href="#">但是亏偶i哦讨厌任天野个土</a>
+				<a href="#">蒂芬森地方森地三</a>
+				<a href="#">新心闻新闻心斯中</a>
+			</div>
+		</dd>
+		<dd class="hid">
+			<div class="list">
+				<a href="#">心芬森法三规芬方</a>
+				<a href="#">法律闻地方中森三</a>
+				<a href="#">蒂新新心闻心斯地</a>
+			</div>
+		</dd>
+		<dd class="hid">
+			<div class="list">
+				<a href="#">往心蒂芬三心方斯</a>
+				<a href="#">但是方法水电费的</a>
+				<a href="#">阿菲挖方把撒地啊</a>
+			</div>
+		</dd>
+	</dl>
+	
+</div>
+</body>
+</html>

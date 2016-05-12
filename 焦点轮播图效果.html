@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  *{margin:0;
+    padding:0;
+    list-style:none;}
+  .wrap{height:170px;
+        width:490px;
+        margin:60px auto;
+        overflow: hidden;
+        position: relative;
+        margin:100px auto;}
+  .wrap ul{position:absolute;top:0;} 
+  .wrap ul li{height:170px;}
+  .wrap ol{position:absolute;
+           right:5px;
+           bottom:10px;}
+  .wrap ol li{height:20px; width: 20px;
+              background:#ccc;
+              border:solid 1px #666;
+              margin-left:5px;
+              color:#000;
+              float:left;
+              line-height:center;
+              text-align:center;
+              cursor:pointer;}
+  .wrap ol .on{background:#E97305;
+               color:#fff;}
+
+  </style>
+  <script type="text/javascript">
+  window.onload=function(){
+    var wrap=document.getElementById('wrap'),
+        pic=document.getElementById('pic'),
+        oli=pic.getElementsByTagName('li'),
+        list=document.getElementById('list').getElementsByTagName('li'),
+        index=1, //自动播放的起始位置
+        imgHeight=pic.getElementsByTagName("li")[0].getElementsByTagName("img")[0].offsetHeight;
+        timer=null;
+        delay=4000;
+        //清除定时器
+        function clearT(){
+            if(timer)
+            {
+                clearInterval(timer);
+                timer=null;
+            }
+        }
+        //自动播放函数
+        function changecard(i){
+            for(var j=0;j<list.length;j++){
+                list[j].className='';
+            }
+           list[i].className='on';
+           pic.style.transition="all 0.4s ease-in-out";
+           pic.style.top=-i*imgHeight+"px";
+           
+        }
+        
+        for(var i=0;i<list.length;i++){
+            (function(i){
+              //鼠标滑过数字和图片事件
+                oli[i].onmouseover=list[i].onmouseover=function(){
+                    //清除定时器
+                    clearT();
+                    changecard(i);
+                    index=i+1;
+                    index=index>list.length-1?0:index;
+                };
+                 oli[i].onmouseout=list[i].onmouseout=function(){
+                    //开启定时器
+                    autoplay();
+                };
+            })(i);
+        }
+        //自动播放
+        function autoplay(){
+          timer=setInterval(function(){
+          changecard(index);
+          index++;
+           index=index>list.length-1?0:index;
+          },delay);
+        }
+        autoplay();
+   }
+
+  </script> 
+</head>
+<body>
+  <div class="wrap" id='wrap'>
+    <ul id="pic">
+      <li><img src="http://img.mukewang.com/54111cd9000174cd04900170.jpg" alt=""></li>
+      <li><img src="http://img.mukewang.com/54111dac000118af04900170.jpg" alt=""></li>
+      <li><img src="http://img.mukewang.com/54111d9c0001998204900170.jpg" alt=""></li>
+      <li><img src="http://img.mukewang.com/54111d8a0001f41704900170.jpg" alt=""></li>
+      <li><img src="http://img.mukewang.com/54111d7d00018ba604900170.jpg" alt=""></li>    
+    </ul>
+    <ol id="list">
+      <li class="on">1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ol>
+  </div>
+</body>
+</html>

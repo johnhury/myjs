@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb_2312">
+<title>选项卡</title>
+<style>
+dl,dt,dd,ul,li{padding:0;margin:0;list-style:none;}
+a{text-decoration:none;color:#2a2a2a;font:16px/28px "宋体";}
+.clear{clear:both;}
+.oDiv{width:453px;margin:0 auto;border:1px solid #ccc;border-right:none;}
+.oDiv ul{width:100%;height:32px;}
+.oDiv ul li{width:150px;border-right:1px solid #ccc;float:left;text-align:center;font:16px/32px "宋体";}
+.oDiv ul li:hover, .on{background:#eee;cursor:pointer;border-bottom:1px solid #fff;}
+
+.oDiv dl{width:100%;}
+.oDiv dl dd{width:452px;border-top:1px solid #ccc;border-right:1px solid #ccc;}
+.hid{display:none;}
+.dis{display:block;}
+
+.list{ height:200px;padding:10px 0;}
+.list a{ display:block; text-indent:1em;}
+</style>
+<script>
+window.onload=function(){
+														//Tab选项卡获取
+	var oDiv=document.getElementById("oDiv");
+	var oUl=oDiv.getElementsByTagName("ul")[0];
+	var oLi=oUl.getElementsByTagName("li");
+														//Tab内容获取	
+	var oDl=oDiv.getElementsByTagName("dl")[0];
+	var oDd=oDl.getElementsByTagName("dd");
+	var timer=null;
+	var delay=500; //设定延时
+	for(i=0;i<oLi.length;i++){							//循环检测每个选项卡
+
+			(function(i){
+			oLi[i].onmouseover=function(){
+
+				//清除定时器
+				if(timer){
+					clearTimeout(timer);
+					timer=null;
+				}
+
+				timer=setTimeout(function(){
+					for(var j=0;j<oLi.length;j++){
+					oLi[j].className='';				//清空选项卡样式
+					oDd[j].className='hid';				//隐藏内容
+					}
+					this.className="on";					//给当前选项卡添加样式
+					oDd[i].className="dis";		//显示当前选项卡索引对应的内容
+
+				},delay);
+				console.log(timer);
+				
+			}	
+			})(i);
+			
+		};
+
+
+}
+</script>
+</head>
+<body>
+<div class='oDiv' id='oDiv'>
+	<ul>
+		<li class="on">新闻中心</li>
+		<li>法律法规</li>
+		<li>行业新闻</li>
+	</ul>
+	<dl>
+		<dd class="dis">
+			<div class="list">
+				<a href="#">新闻中心</a>
+				<a href="#">新闻中心</a>
+				<a href="#">新闻中心</a>
+			</div>
+		</dd>
+		<dd class="hid">
+			<div class="list">
+				<a href="#">法律法规</a>
+				<a href="#">法律法规</a>
+				<a href="#">法律法规</a>
+			</div>
+		</dd>
+		<dd class="hid">
+			<div class="list">
+				<a href="#">行业新闻</a>
+				<a href="#">行业新闻</a>
+				<a href="#">行业新闻</a>
+			</div>
+		</dd>
+	</dl>
+	
+</div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<title>滚动</title>
+		<style>
+		ul,li{list-style:none;padding:0;margin:0;}
+		.scroller {width:1040px;height:200px;margin:0 auto;position:relative;}
+		.scroll {width:1000px;height:200px;margin:0 auto;position:relative;overflow:hidden;}
+		.scroll ul{position:absolute;left:0px;top:0px;width:9000px;}
+		.scroll li{width:199px;background:red;border-right:1px solid #ccc;height:200px;float:left;line-height:200px;font-size:50px;text-align:center;font-family:\5FAE\8F6F\96C5\9ED1;color:#fff;}
+		.scroller i{width:20px;line-height:200px;text-align:center;height:200px;background:blue;position:absolute;font-size:30px;font-family:5FAE\8F6F\96C5\9ED1;font-style:normal;color:#fff;}
+		i.bt1{left:0px;top:0;cursor:pointer;}
+		i.bt2{left:1020px;top:0;cursor:pointer;}
+		</style>
+	</head>
+	<body>
+	<div class="scroller" id="scroller">
+		<i class="bt1">&lt;</i>
+		<i class="bt2">&gt;</i>
+		<div class="scroll">
+			<ul>
+				<li>图片1</li>
+				<li>图片2</li>
+				<li>图片3</li>
+				<li>图片4</li>
+				<li>图片5</li>
+			</ul>
+		</div>
+	</div>
+	<br />
+	<div class="scroller" id="scroller2">
+		<i class="bt1">&lt;</i>
+		<i class="bt2">&gt;</i>
+		<div class="scroll">
+			<ul>
+				<li>图片6</li>
+				<li>图片7</li>
+				<li>图片8</li>
+				<li>图片9</li>
+				<li>图片10</li>
+				<li>图片11</li>
+			</ul>
+		</div>
+	</div>
+	<br />
+	<div class="scroller" id="scroller3">
+		<i class="bt1">&lt;</i>
+		<i class="bt2">&gt;</i>
+		<div class="scroll">
+			<ul>
+				<li>图片A</li>
+				<li>图片B</li>
+				<li>图片C</li>
+				<li>图片D</li>
+				<li>图片E</li>
+			</ul>
+		</div>
+	</div>
+	</body>
+	<script>
+	function Scroll(id,speed){
+	this.id=id;
+	this.s=speed;
+	this.speed=speed;
+	this.l=0;
+	this.w=null;
+	this.oSR=document.getElementById(this.id);
+	this.oS=this.oSR.getElementsByTagName('div')[0];
+	this.oU=this.oS.getElementsByTagName('ul')[0];
+	this.oL=this.oU.getElementsByTagName('li');
+	this.oBt1=this.oSR.getElementsByTagName('i')[0];
+	this.oBt2=this.oSR.getElementsByTagName('i')[1];
+	this.oU.innerHTML+=this.oU.innerHTML;
+	}
+	
+	Scroll.prototype.run=function(){
+	_this=this;
+	//向左滚动事件
+	this.oBt1.onmouseover=function(){
+	_s=-_this.s;
+	_ts=_s;
+	}
+	//向右滚动事件
+	this.oBt2.onmouseover=function(){
+	_s=_this.s;
+	_ts=_s;
+	}
+	//鼠标经过图片事件[滚动暂停]
+	this.oU.onmouseover=function(){
+		_s=0;
+	}
+	this.oU.onmouseout=function(){
+		_s=_ts;
+	}
+
+	var _a=this.oU;
+	var _b=this.oL;
+	var _s=_ts=this.speed;
+	var _w=this.w;
+	var _l=this.l;
+	var _in=setInterval(move,80);
+	function move(){
+		_a.offsetLeft=_l;
+		_a.style.left=_l+'px';
+		_l+=_s;
+		_w=_a.offsetLeft;
+		if(_w<-_b.length*200/2)
+		_l=0;
+		else if(_w>0)
+		_l=-_b.length*200/2;
+	}
+	}
+	
+	var scroll1=new Scroll('scroller',-4);
+	scroll1.run();
+	var scroll2=new Scroll('scroller2',4);
+	scroll2.run();
+	var scroll3=new Scroll('scroller3',4);
+	scroll3.run();
+	</script>
+</html>
